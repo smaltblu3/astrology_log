@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Retrograde Season 2026: Event Record</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;500;700&family=Noto+Sans+Symbols+2&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F3EEFB; --surface:#FFFFFF; --ink:#24183F; --muted:#6B5F86; --line:#D9CFEA;
+  --mercury:#14876F; --venus:#C4356B; --mars:#C2541B; --pluto:#5B3FB8; --earth:#9A7A12;
+  --chip:#EDE6F8; --glow:rgba(91,63,184,.18); --box:#111111;
+  color-scheme:light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#161033; --surface:#211A47; --ink:#F1ECFF; --muted:#A99FCB; --line:#3A3068;
+    --mercury:#7FE0C8; --venus:#FF8FB1; --mars:#FFA66B; --pluto:#B9A6FF; --earth:#F2C94E;
+    --chip:#2C2459; --glow:rgba(185,166,255,.22); --box:#F1ECFF;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#161033; --surface:#211A47; --ink:#F1ECFF; --muted:#A99FCB; --line:#3A3068;
+  --mercury:#7FE0C8; --venus:#FF8FB1; --mars:#FFA66B; --pluto:#B9A6FF; --earth:#F2C94E;
+  --chip:#2C2459; --glow:rgba(185,166,255,.22); --box:#F1ECFF;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.6 Figtree,system-ui,-apple-system,"Segoe UI",sans-serif}
+.wrap{max-width:58rem;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+h1,h2,h3{font-family:"Young Serif",Georgia,"Times New Roman",serif;font-weight:400;line-height:1.15;margin:0}
+a{color:var(--pluto)}
+:focus-visible{outline:3px solid var(--pluto);outline-offset:2px;border-radius:4px}
+
+/* hero */
+.hero{padding:1rem 0 2rem}
+.loop{width:100%;max-width:34rem;display:block;margin:0 auto .5rem;overflow:visible}
+.loop .path{fill:none;stroke:var(--line);stroke-width:3;stroke-dasharray:2 9;stroke-linecap:round}
+.loop .stn{fill:var(--bg);stroke:var(--mercury);stroke-width:2.5}
+.loop text{font:500 12px Figtree,system-ui,sans-serif;fill:var(--muted)}
+.loop .planet{fill:var(--mercury);filter:drop-shadow(0 0 8px var(--mercury))}
+h1{font-size:clamp(2.3rem,8vw,3.6rem);text-align:center;letter-spacing:-.01em}
+.sub{text-align:center;color:var(--muted);max-width:32rem;margin:.75rem auto 0}
+.status{margin:1.75rem auto 0;max-width:30rem;text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:1.25rem;padding:1rem 1.25rem;box-shadow:0 10px 40px var(--glow)}
+.status strong{display:block;font-family:"Young Serif",Georgia,serif;font-weight:400;font-size:1.5rem}
+.status span{color:var(--muted);font-size:.95rem}
+
+section{margin-top:3rem}
+section > h2{font-size:1.75rem;margin-bottom:.4rem}
+section > p.lede{color:var(--muted);margin:0 0 1.25rem}
+
+/* cast */
+.cast{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.75rem}
+.who{border-left:4px solid var(--c);padding:.35rem 0 .35rem .9rem}
+.who h3{font-size:1.15rem;color:var(--c)}
+.who p{margin:.2rem 0 0;font-size:.95rem}
+.aspects{margin-top:1.25rem;display:grid;gap:.5rem}
+.aspect{display:grid;grid-template-columns:2.4rem 1fr;gap:.6rem;align-items:start}
+.glyph{font-size:1.5rem;line-height:1.2;text-align:center;color:var(--pluto)}
+.aspect p{margin:0;font-size:.95rem}
+.aspect b{font-weight:700}
+
+/* timeline */
+.filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.filters button{font:inherit;font-size:.9rem;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:.35rem .85rem;border-radius:999px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.colhead{display:grid;grid-template-columns:3.6rem minmax(13rem,17rem) 1fr;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-bottom:.4rem;border-bottom:1px solid var(--line)}
+.colhead span:last-child{padding-left:2rem}
+.timeline{list-style:none;margin:0;padding:0}
+.day{display:grid;grid-template-columns:3.6rem minmax(13rem,17rem) 1fr;align-items:start;padding:1rem 0;border-bottom:1px solid var(--line)}
+.day.today .date{color:var(--venus)}
+.date{font-family:"Young Serif",Georgia,serif;font-size:1.3rem;line-height:1.1;padding-top:.3rem}
+.date small{display:block;font-family:Figtree,system-ui,sans-serif;font-size:.75rem;color:var(--muted)}
+.tbox{border:1.5px solid var(--box);border-radius:.6rem;background:var(--surface);color:var(--box);padding:.45rem .65rem;display:grid;gap:.3rem}
+.tx{font-size:.86rem;line-height:1.35;display:grid;grid-template-columns:2.6rem 1fr;gap:.35rem;align-items:baseline}
+.tx .g{font-family:"Noto Sans Symbols 2","Segoe UI Symbol","Apple Symbols",system-ui,sans-serif;white-space:nowrap}
+.tx.exact{font-weight:700;padding-bottom:.3rem;border-bottom:1px solid var(--line)}
+.tx.exact .g{font-family:Figtree,system-ui,sans-serif;font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;align-self:center}
+.ecol{padding-left:2rem;display:grid;gap:.6rem}
+.ev{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:.8rem;padding:.65rem .9rem}
+.ev::before{content:"";position:absolute;top:1.2rem;left:-1rem;width:1rem;height:1.5px;background:var(--box)}
+.ev:first-child::before{left:-2rem;width:2rem}
+.ev:not(:last-child)::after{content:"";position:absolute;left:-1rem;top:1.2rem;width:1.5px;height:calc(100% + .6rem);background:var(--box)}
+.ev.world{border-left:4px solid var(--mars)}
+.ev.mine{border-style:dashed}
+.ev .kind{font-size:.78rem;color:var(--muted)}
+.ev h3{font-family:Figtree,system-ui,sans-serif;font-weight:700;font-size:1rem;margin:.1rem 0}
+.ev p{margin:.15rem 0 0;font-size:.93rem}
+.ev .del{margin-top:.4rem;font:inherit;font-size:.8rem;background:none;border:0;color:var(--venus);cursor:pointer;padding:0;text-decoration:underline}
+.future .tbox{border-style:dashed}
+
+/* form */
+form{display:grid;gap:.75rem;background:var(--surface);border:1px solid var(--line);border-radius:1.1rem;padding:1.1rem;max-width:40rem}
+label{display:grid;gap:.25rem;font-size:.9rem;font-weight:500}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:.6rem;padding:.55rem .7rem;width:100%}
+textarea{min-height:4.5rem;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.btn{font:inherit;font-weight:700;background:var(--venus);color:#fff;border:0;border-radius:999px;padding:.7rem 1.2rem;cursor:pointer;justify-self:start}
+.note{font-size:.85rem;color:var(--muted);margin:0}
+.toast{min-height:1.2rem;font-size:.9rem;color:var(--mercury);margin:0}
+.skeptic{background:var(--chip);border-radius:1.1rem;padding:1.1rem 1.25rem;max-width:46rem}
+.skeptic h2{font-size:1.35rem;margin-bottom:.35rem}
+.skeptic p{margin:.4rem 0 0;font-size:.95rem}
+footer{margin-top:3rem;font-size:.8rem;color:var(--muted);text-align:center}
+
+@media (max-width:40rem){
+  .colhead{display:none}
+  .day{grid-template-columns:1fr;gap:.6rem}
+  .date{display:flex;align-items:baseline;gap:.4rem;padding-top:0}
+  .date small{display:inline}
+  .ecol{padding-left:1.5rem;position:relative}
+  .ecol::before{content:"";position:absolute;left:.5rem;top:-.6rem;width:1.5px;height:1.8rem;background:var(--box)}
+  .ev::before,.ev:first-child::before{left:-1rem;width:1rem}
+  .row{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){ .loop animateMotion{display:none} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <svg class="loop" viewBox="0 0 520 190" role="img" aria-label="Mercury’s apparent path looping backwards across the sky">
+    <path id="mpath" class="path" d="M10 150 C 120 140, 230 120, 300 80 C 360 45, 400 70, 380 110 C 360 150, 260 130, 250 95 C 240 60, 330 40, 410 50 C 460 56, 490 62, 510 66"/>
+    <circle class="stn" cx="386" cy="66" r="6"/>
+    <text x="396" y="40">stations ℞ · Oct 24</text>
+    <circle class="stn" cx="254" cy="112" r="6"/>
+    <text x="150" y="160">stations direct · Nov 13</text>
+    <circle class="planet" r="9">
+      <animateMotion dur="9s" repeatCount="indefinite" rotate="0"><mpath href="#mpath"/></animateMotion>
+    </circle>
+  </svg>
+  <h1>Retrograde Season 2026</h1>
+  <p class="sub">An event record for the Mercury and Venus retrogrades in Scorpio, from Mercury’s shadow entry on Oct 4 to its shadow exit on Nov 30. Each event is logged with the transits active that day.</p>
+  <div class="status" id="status" aria-live="polite"><strong>Checking the sky…</strong><span></span></div>
+</header>
+
+<section id="cast">
+  <h2>The placements</h2>
+  <p class="lede">Traditional significations of each planet involved this season.</p>
+  <div class="cast">
+    <div class="who" style="--c:var(--mercury)"><h3>Mercury ℞ in Scorpio</h3><p>Communication, technology, transport, contracts and data. Scorpio adds secrecy, investigation and hidden information.</p></div>
+    <div class="who" style="--c:var(--venus)"><h3>Venus ℞ (Scorpio → Libra)</h3><p>Money, payments, value, relationships and agreements. Retrograde from Oct 3; moves back into Libra on Oct 25.</p></div>
+    <div class="who" style="--c:var(--mars)"><h3>Mars in Leo</h3><p>Action, force, heat and conflict. Squares Mercury three times across the cycle.</p></div>
+    <div class="who" style="--c:var(--pluto)"><h3>Pluto in Aquarius</h3><p>Power, control, collective infrastructure and upheaval. Opposed by Mars and squared by Venus this season.</p></div>
+  </div>
+  <div class="aspects">
+    <div class="aspect"><div class="glyph" aria-hidden="true">☌</div><p><b>Conjunction (0°):</b> two planets combine and intensify each other.</p></div>
+    <div class="aspect"><div class="glyph" aria-hidden="true">□</div><p><b>Square (90°):</b> tension that forces action or change.</p></div>
+    <div class="aspect"><div class="glyph" aria-hidden="true">☍</div><p><b>Opposition (180°):</b> polarity between two forces, often externalised as conflict.</p></div>
+    <div class="aspect"><div class="glyph" aria-hidden="true">⊤</div><p><b>T-square:</b> an opposition with a third planet square to both; the third planet is the focal point.</p></div>
+    <div class="aspect"><div class="glyph" aria-hidden="true">☉</div><p><b>Cazimi:</b> a planet within about 17′ of the Sun, the midpoint of its retrograde.</p></div>
+  </div>
+</section>
+
+<section id="log">
+  <h2>Event record</h2>
+  <p class="lede">Each day shows the transits in effect, linked to the events recorded that day.</p>
+  <div class="filters" role="group" aria-label="Filter timeline">
+    <button type="button" data-f="all" aria-pressed="true">All days</button>
+    <button type="button" data-f="events" aria-pressed="false">Days with events</button>
+    <button type="button" data-f="infra" aria-pressed="false">Tech, transport &amp; money</button>
+    <button type="button" data-f="world" aria-pressed="false">Weather &amp; conflict</button>
+  </div>
+  <div class="colhead" aria-hidden="true"><span>Date</span><span>Transits</span><span>Events</span></div>
+  <ol class="timeline" id="timeline"></ol>
+</section>
+
+<section id="add">
+  <h2>Add an event</h2>
+  <p class="lede">Record new events as they happen. The active transits are filled in automatically.</p>
+  <form id="f">
+    <div class="row">
+      <label>Date<input type="date" id="fd" required min="2026-10-01" max="2026-12-31"></label>
+      <label>Category
+        <select id="fk">
+          <option>Tech</option><option>Transport</option><option>Money</option><option>Communication</option>
+          <option>Weather</option><option>Conflict</option><option>Markets</option><option>Personal</option><option>Other</option>
+        </select>
+      </label>
+    </div>
+    <label>Event<input id="ft" required maxlength="100"></label>
+    <label>Details and source (optional)<textarea id="fx" maxlength="400"></textarea></label>
+    <button class="btn" type="submit">Add to record</button>
+    <p class="toast" id="toast" aria-live="polite"></p>
+    <p class="note">Entries you add are saved in this browser only.</p>
+  </form>
+</section>
+
+<section class="skeptic">
+  <h2>Method notes</h2>
+  <p>To make the record useful as evidence, compare it against base rates. AWS alone logged 8 incidents in the 90 days before Oct 20. October is also olive-harvest season in the West Bank, when clashes typically rise, and late October is within peak typhoon season.</p>
+  <p>Continue logging the same categories after Nov 30 to have a comparison window.</p>
+</section>
+
+<footer>Transit dates from published 2026 ephemerides; exact times vary slightly by source and time zone. World events per news reports (AFP, AP, Reuters, Al Jazeera, Times of Israel, Manila Times, The Watchers). Singapore MRT entry is a firsthand report.</footer>
+</div>
+<script>
+const SKY = [
+  ["2026-10-02","Mercury □ Mars (1st of 3)","First of three Mercury–Mars squares, just before Mercury enters its shadow."],
+  ["2026-10-03","Venus stations retrograde at 8°29′ Scorpio","Mars ☍ Pluto exact the same day, forming a T-square with Venus at the apex. Sun ☍ Saturn."],
+  ["2026-10-04","Mercury enters pre-retrograde shadow at 5° Scorpio","Mercury conjunct Venus as the shadow opens."],
+  ["2026-10-07","Mercury ☌ Venus exact at 8° Scorpio","Conjunction at the degree where Venus stationed retrograde."],
+  ["2026-10-10","New Moon in Libra, 17°21′","Wide opposition to Saturn."],
+  ["2026-10-20","Venus □ Pluto","Retrograde Venus squares Pluto in Aquarius (1st pass during the retrograde)."],
+  ["2026-10-23","Sun enters Scorpio; Venus cazimi at 0°45′ Scorpio","Midpoint of the Venus retrograde. Sun, Mercury and Venus share Scorpio."],
+  ["2026-10-24","Mercury stations retrograde at 20°59′ Scorpio","07:12 UTC (3:12 pm SGT). Mercury and Venus both retrograde."],
+  ["2026-10-25","Venus re-enters Libra","Venus completes its retrograde in Libra."],
+  ["2026-10-26","Full Moon in Taurus, 2°45′","Square Pluto, opposite retrograde Venus, conjunct Chiron."],
+  ["2026-10-30","Mercury ℞ □ Mars (2nd of 3)","Second Mercury–Mars square, during the retrograde."],
+  ["2026-11-04","Mercury cazimi at 12° Scorpio","Midpoint of the Mercury retrograde."],
+  ["2026-11-13","Mercury stations direct at 5°02′ Scorpio; Venus stations direct in Libra","Venus station falls Nov 13–14 depending on time zone."],
+  ["2026-11-30","Mercury leaves its post-retrograde shadow","Mercury clears 20°59′ Scorpio."],
+  ["2026-12-09","Mercury □ Mars (3rd) and Venus □ Pluto (3rd)","Final passes of both squares."]
+];
+// [date, group(infra|world), category, title, details]
+const EVENTS = [
+  ["2026-10-04","infra","Tech","AWS elevated packet loss in Spain","Minor regional AWS incident."],
+  ["2026-10-05","world","Conflict","West Bank: one killed, two seriously injured near Bani Naim","Israeli troops fired on a car near Hebron after, per the military, it rammed an army vehicle. Palestinian officials reported one dead and two seriously injured."],
+  ["2026-10-07","infra","Money","Toast payment failures","Restaurant platform Toast reported failed catering and invoice payments."],
+  ["2026-10-07","world","Conflict","West Bank: one killed, 16 wounded during olive harvest near Nablus","Palestinian Ministry of Health reported a 44-year-old man killed in settler assaults on olive harvesters near Burqa."],
+  ["2026-10-14","infra","Tech","Toast incident (second)","Another Toast service incident."],
+  ["2026-10-16","world","Weather","Singapore haze: PSI 229","Central region’s highest 24-hour PSI of 2026."],
+  ["2026-10-16","world","Conflict","West Bank: settler attack at Turmus Ayya","Masked settlers burned olive trees and threw rocks during the harvest; at least two injured, including a journalist."],
+  ["2026-10-18","world","Weather","Typhoon Champi passes south of Guam","Passed about 16 km off Guam’s southern tip."],
+  ["2026-10-20","infra","Tech","Google Cloud London outage","A “power event” in europe-west2 took down Revolut, ING Germany, Lloyds, Halifax, HSBC, Spotify, DPD and the NHS app for hours. Revolut users could not pay or withdraw cash."],
+  ["2026-10-20","world","Weather","Super Typhoon Champi peaks at 296 km/h","Strongest tropical cyclone of 2026 by wind speed."],
+  ["2026-10-22","world","Weather","Champi: Taiwan warnings, 150+ flights cancelled","Zhejiang and Fujian begin evacuations; fishing boats ordered to port."],
+  ["2026-10-23","infra","Transport","Singapore MRT disruption (~15 min)","Firsthand report. Eight days after LTA reported record MRT reliability."],
+  ["2026-10-23","world","Conflict","West Bank: shooting near Hebron; closure ordered","Five injured, two critically. Israeli soldiers killed the two gunmen; Israel ordered preparations for a full West Bank closure."],
+  ["2026-10-23","world","Weather","Champi reaches Taiwan’s northeast coast","Expected to continue toward China, Japan and South Korea through Oct 26."]
+];
+// aspect windows for automatic context [start,end,label]
+const V="♀\uFE0E", M="♂\uFE0E";
+const WINDOWS = [
+  ["2026-10-04","2026-10-24","Mercury pre-retrograde shadow","☿ sh"],
+  ["2026-10-24","2026-11-13","Mercury retrograde","☿℞"],
+  ["2026-11-13","2026-11-30","Mercury post-retrograde shadow","☿ sh"],
+  ["2026-10-03","2026-11-14","Venus retrograde",V+"℞"],
+  ["2026-09-28","2026-10-19","Mars ☍ Pluto, T-square to Venus",M+"☍♇"],
+  ["2026-10-05","2026-10-09","Mercury ☌ Venus","☿☌"+V],
+  ["2026-10-17","2026-10-23","Venus □ Pluto",V+"□♇"],
+  ["2026-10-27","2026-11-02","Mercury □ Mars","☿□"+M],
+  ["2026-10-24","2026-10-28","Full Moon T-square to Pluto","☽□♇"]
+];
+const KEY = "rgl-mine-v1";
+let filter = "all";
+function active(d){ return WINDOWS.filter(([a,b])=>d>=a && d<=b).map(w=>w[2]); }
+function skyOn(d){ return SKY.filter(s=>s[0]===d).map(s=>s[1].split(" (")[0]); }
+function loadMine(){ try{ return JSON.parse(localStorage.getItem(KEY)) || []; }catch(e){ return []; } }
+function saveMine(a){ try{ localStorage.setItem(KEY, JSON.stringify(a)); return true; }catch(e){ return false; } }
+function esc(s){ const d=document.createElement("div"); d.textContent=s==null?"":s; return d.innerHTML; }
+function todayISO(){ const n=new Date(); return new Date(n.getTime()-n.getTimezoneOffset()*60000).toISOString().slice(0,10); }
+const WORLD = ["Weather","Conflict"];
+
+function render(){
+  const evs = [];
+  EVENTS.forEach(([d,g,k,t,p])=>evs.push({d,g,cls:g==="world"?"world":"",kind:k,t,p}));
+  loadMine().forEach((m,i)=>evs.push({d:m.d,g:WORLD.includes(m.k)?"world":"infra",cls:"mine"+(WORLD.includes(m.k)?" world":""),kind:m.k+" · added by you",t:m.t,p:m.x,idx:i}));
+  const days = new Set(SKY.map(s=>s[0]));
+  evs.forEach(e=>days.add(e.d));
+  const today = todayISO();
+  const html = [...days].sort().map(d=>{
+    let list = evs.filter(e=>e.d===d);
+    if(filter==="infra"||filter==="world") list = list.filter(e=>e.g===filter);
+    if(filter!=="all" && !list.length) return "";
+    const exact = SKY.filter(s=>s[0]===d).map(s=>`<div class="tx exact" title="${esc(s[2])}"><span class="g">Exact</span><span>${esc(s[1])}</span></div>`).join("");
+    const act = WINDOWS.filter(([a,b])=>d>=a&&d<=b).map(w=>`<div class="tx"><span class="g">${w[3]}</span><span>${esc(w[2])}</span></div>`).join("");
+    const tbox = (exact||act) ? `<div class="tbox">${exact}${act}</div>` : `<div class="tbox"><div class="tx"><span class="g">—</span><span>No major transits</span></div></div>`;
+    const cards = list.map(x=>`<div class="ev ${x.cls}">
+        <div class="kind">${esc(x.kind)}</div>
+        <h3>${esc(x.t)}</h3>
+        ${x.p?`<p>${esc(x.p)}</p>`:""}
+        ${x.idx!==undefined?`<button class="del" data-i="${x.idx}" type="button">Remove</button>`:""}
+      </div>`).join("");
+    const dt = new Date(d+"T12:00:00");
+    const mon = dt.toLocaleDateString("en-GB",{month:"short"});
+    const cls = ["day", d===today?"today":"", d>today?"future":""].join(" ");
+    return `<li class="${cls}"><div class="date">${dt.getDate()}<small>${mon}${d===today?" · today":""}</small></div>${tbox}${cards?`<div class="ecol">${cards}</div>`:"<div></div>"}</li>`;
+  }).join("");
+  document.getElementById("timeline").innerHTML = html || `<li class="day"><div></div><p>No entries in this view.</p></li>`;
+}
+document.querySelector(".filters").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b) return;
+  filter=b.dataset.f;
+  document.querySelectorAll(".filters button").forEach(x=>x.setAttribute("aria-pressed", x===b));
+  render();
+});
+document.getElementById("timeline").addEventListener("click",e=>{
+  const b=e.target.closest(".del"); if(!b) return;
+  const a=loadMine(); a.splice(+b.dataset.i,1); saveMine(a); render();
+});
+document.getElementById("f").addEventListener("submit",e=>{
+  e.preventDefault();
+  const m={d:fd.value,k:fk.value,t:ft.value.trim(),x:fx.value.trim()};
+  if(!m.d||!m.t) return;
+  const a=loadMine(); a.push(m); const ok=saveMine(a);
+  if(!ok) EVENTS.push([m.d,WORLD.includes(m.k)?"world":"infra",m.k,m.t,m.x]);
+  document.getElementById("toast").textContent = ok ? "Added to the record." : "Couldn’t save in this browser; showing for this session only.";
+  ft.value=""; fx.value=""; render();
+});
+document.getElementById("fd").value = todayISO();
+function status(){
+  const now=Date.now();
+  const P={shadow:Date.parse("2026-10-04T09:09:00Z"),rx:Date.parse("2026-10-24T07:12:00Z"),direct:Date.parse("2026-11-13T15:53:00Z"),clear:Date.parse("2026-11-30T06:16:00Z")};
+  const span=ms=>{const d=Math.floor(ms/864e5),h=Math.floor(ms%864e5/36e5);return d>0?`${d} day${d===1?"":"s"}, ${h} hr`:`${h} hr ${Math.floor(ms%36e5/6e4)} min`;};
+  let s,t;
+  if(now<P.shadow){s="Before the shadow";t=`Mercury enters its shadow in ${span(P.shadow-now)}.`;}
+  else if(now<P.rx){s="Mercury pre-retrograde shadow";t=`Mercury stations retrograde in ${span(P.rx-now)}. Venus is retrograde.`;}
+  else if(now<P.direct){s="Mercury retrograde";t=`Mercury stations direct in ${span(P.direct-now)}.`;}
+  else if(now<P.clear){s="Mercury post-retrograde shadow";t=`Mercury clears its shadow in ${span(P.clear-now)}.`;}
+  else{s="Cycle complete";t="Mercury has cleared its shadow. Continue logging for the comparison window.";}
+  document.getElementById("status").innerHTML=`<strong>${s}</strong><span>${t}</span>`;
+}
+status(); setInterval(status,60000); render();
+</script>
+</body>
+</html>
