@@ -138,7 +138,7 @@ footer{margin-top:3rem;font-size:.8rem;color:var(--muted);text-align:center}
     </circle>
   </svg>
   <h1>Retrograde Season 2026</h1>
-  <p class="sub">An event record for the Mercury and Venus retrogrades in Scorpio, from Mercury’s shadow entry on Oct 4 to its shadow exit on Nov 30. Each event is logged with the transits active that day.</p>
+  <p class="sub">An event record for the Mercury and Venus retrogrades in Scorpio, from Mercury’s shadow entry on Oct 4 to its shadow exit on Nov 30. Each event is logged with the transits active that day, covering tech, transport and money as well as war, unrest and natural disasters.</p>
   <div class="status" id="status" aria-live="polite"><strong>Checking the sky…</strong><span></span></div>
 </header>
 
@@ -166,8 +166,8 @@ footer{margin-top:3rem;font-size:.8rem;color:var(--muted);text-align:center}
   <div class="filters" role="group" aria-label="Filter timeline">
     <button type="button" data-f="all" aria-pressed="true">All days</button>
     <button type="button" data-f="events" aria-pressed="false">Days with events</button>
-    <button type="button" data-f="infra" aria-pressed="false">Tech, transport &amp; money</button>
-    <button type="button" data-f="world" aria-pressed="false">Weather &amp; conflict</button>
+    <button type="button" data-f="infra" aria-pressed="false">Tech, money &amp; business</button>
+    <button type="button" data-f="world" aria-pressed="false">War, unrest &amp; disasters</button>
   </div>
   <div class="colhead" aria-hidden="true"><span>Date</span><span>Transits</span><span>Events</span></div>
   <ol class="timeline" id="timeline"></ol>
@@ -182,7 +182,7 @@ footer{margin-top:3rem;font-size:.8rem;color:var(--muted);text-align:center}
       <label>Category
         <select id="fk">
           <option>Tech</option><option>Transport</option><option>Money</option><option>Communication</option>
-          <option>Weather</option><option>Conflict</option><option>Markets</option><option>Personal</option><option>Other</option>
+          <option>Energy</option><option>Layoffs</option><option>Weather</option><option>Earthquake</option><option>Disaster</option><option>War</option><option>Conflict</option><option>Unrest</option><option>Markets</option><option>Personal</option><option>Other</option>
         </select>
       </label>
     </div>
@@ -200,7 +200,7 @@ footer{margin-top:3rem;font-size:.8rem;color:var(--muted);text-align:center}
   <p>Continue logging the same categories after Nov 30 to have a comparison window.</p>
 </section>
 
-<footer>Transit dates from published 2026 ephemerides; exact times vary slightly by source and time zone. World events per news reports (AFP, AP, Reuters, Al Jazeera, Times of Israel, Manila Times, The Watchers). Singapore MRT entry is a firsthand report.</footer>
+<footer>Transit dates from published 2026 ephemerides; exact times vary slightly by source and time zone. World events per news reports (AFP, AP, Reuters, Al Jazeera, Times of Israel, Manila Times, The Watchers, France 24, Bloomberg, CNA, Straits Times). Singapore MRT entry is a firsthand report.</footer>
 </div>
 <script>
 const SKY = [
@@ -224,18 +224,36 @@ const SKY = [
 const EVENTS = [
   ["2026-10-04","infra","Tech","AWS elevated packet loss in Spain","Minor regional AWS incident."],
   ["2026-10-05","world","Conflict","West Bank: one killed, two seriously injured near Bani Naim","Israeli troops fired on a car near Hebron after, per the military, it rammed an army vehicle. Palestinian officials reported one dead and two seriously injured."],
-  ["2026-10-07","infra","Money","Toast payment failures","Restaurant platform Toast reported failed catering and invoice payments."],
+  ["2026-10-07","world","War","Ukraine: mass Russian missile and drone strike","Dozens of missiles and drones hit several regions overnight. A missile destroyed a five-storey apartment block in Pryluky, killing 22 including five children. National toll reported at 25–28."],
+  ["2026-10-07","infra","Money","Toast payment failures","Toast, a US restaurant point-of-sale and payments platform, reported failed catering and invoice payments on its status page."],
   ["2026-10-07","world","Conflict","West Bank: one killed, 16 wounded during olive harvest near Nablus","Palestinian Ministry of Health reported a 44-year-old man killed in settler assaults on olive harvesters near Burqa."],
+  ["2026-10-09","world","Earthquake","Panama: M7.7 earthquake","Largest quake in Panama since 1882. At least 2 dead, 27 injured; tsunami warning issued for Colombia, Ecuador and Central America’s Pacific coast."],
+  ["2026-10-09","world","War","Houthi strikes on a Saudi airport","Described by analysts as a significant escalation."],
+  ["2026-10-10","world","War","Ukraine: Russian airstrike kills at least 12","Per President Zelenskyy; rescue teams searched the wreckage for survivors."],
+  ["2026-10-11","world","War","Ukraine: Kharkiv grocery store hit","Three killed and 20 injured in Kharkiv; a separate strike in western Ukraine killed three more."],
+  ["2026-10-11","world","Disaster","Nepal: Budhi Gandaki flash flood","A landslide-triggered debris flow in Gorkha district swept away houses and bridges; 5–6 missing."],
   ["2026-10-14","infra","Tech","Toast incident (second)","Another Toast service incident."],
+  ["2026-10-15","world","Disaster","Istanbul floods","Heavy rain on Oct 14–15 left at least two dead and nearly 600 evacuated, with major transport disruption."],
   ["2026-10-16","world","Weather","Singapore haze: PSI 229","Central region’s highest 24-hour PSI of 2026."],
   ["2026-10-16","world","Conflict","West Bank: settler attack at Turmus Ayya","Masked settlers burned olive trees and threw rocks during the harvest; at least two injured, including a journalist."],
+  ["2026-10-17","world","Unrest","France: cost-of-living riots, Limoges town hall burned","Masked protesters set fire to Limoges’ 143-year-old town hall, which the prefect said was largely lost after the roof collapsed. Lyon’s tourism office was torched and Marseille city hall stormed. 1,800+ arrested."],
+  ["2026-10-17","world","Unrest","Milan: protest turns violent in Piazza del Duomo","A march against wars and rising living costs turned into looting and fires set in the square outside the cathedral, emptying the area. The cathedral itself was not burned."],
+  ["2026-10-18","world","Disaster","Ecuador: landslide kills two in Azuay","Floods have affected more than 23,000 people nationwide, with seven rivers overflowing."],
   ["2026-10-18","world","Weather","Typhoon Champi passes south of Guam","Passed about 16 km off Guam’s southern tip."],
   ["2026-10-20","infra","Tech","Google Cloud London outage","A “power event” in europe-west2 took down Revolut, ING Germany, Lloyds, Halifax, HSBC, Spotify, DPD and the NHS app for hours. Revolut users could not pay or withdraw cash."],
   ["2026-10-20","world","Weather","Super Typhoon Champi peaks at 296 km/h","Strongest tropical cyclone of 2026 by wind speed."],
+  ["2026-10-20","world","War","Ukraine: drone strike on Kyiv–Odesa highway","Three killed and four wounded; a day after a ballistic missile and drone attack on Kyiv killed one."],
+  ["2026-10-20","infra","Layoffs","Qualcomm announces global layoffs","CEO Cristiano Amon’s memo describes a “performance-focused reduction” after annual reviews. Headcount not disclosed; notifications start in November."],
+  ["2026-10-21","infra","Layoffs","eBay to cut about 9% of its workforce","Its second round of 2026 layoffs, after cutting about 800 jobs in February."],
+  ["2026-10-23","infra","Layoffs","American Express to cut about 3,500 jobs","Roughly 5% of its global workforce, with a $336 million restructuring charge, announced alongside record quarterly revenue."],
+  ["2026-10-21","world","War","Ukraine: strikes on energy facilities","Four killed in overnight Russian strikes on Kyiv, Volyn, Odesa and Mykolaiv regions."],
+  ["2026-10-22","world","War","Strait of Hormuz: seven tankers attacked or mined","Per Iranian state TV, possibly the largest single-day number of vessels damaged since the Iran war began on Feb 28."],
+  ["2026-10-22","world","Earthquake","Tibet: M7.0 earthquake in Nagqu","At least 16–20 killed and 76 injured; 339 homes collapsed. Power and communication lines down. Strongest quake in China since Jan 2024."],
   ["2026-10-22","world","Weather","Champi: Taiwan warnings, 150+ flights cancelled","Zhejiang and Fujian begin evacuations; fishing boats ordered to port."],
-  ["2026-10-23","infra","Transport","Singapore MRT disruption (~15 min)","Firsthand report. Eight days after LTA reported record MRT reliability."],
   ["2026-10-23","world","Conflict","West Bank: shooting near Hebron; closure ordered","Five injured, two critically. Israeli soldiers killed the two gunmen; Israel ordered preparations for a full West Bank closure."],
-  ["2026-10-23","world","Weather","Champi reaches Taiwan’s northeast coast","Expected to continue toward China, Japan and South Korea through Oct 26."]
+  ["2026-10-23","world","Weather","Champi reaches Taiwan’s northeast coast","Expected to continue toward China, Japan and South Korea through Oct 26."],
+  ["2026-10-24","infra","Energy","Indonesia cuts gas exports to Singapore","Pipeline exports cut by 31 BBTUD (15 from Natuna, 16 from Sumatra) to prioritise domestic demand, amid tensions over haze. EMA says the cut is under 2% of Singapore’s daily gas demand."],
+  ["2026-10-24","infra","Transport","Singapore MRT disruption (~15 min)","Firsthand report. Nine days after LTA reported record MRT reliability."]
 ];
 // aspect windows for automatic context [start,end,label]
 const V="♀\uFE0E", M="♂\uFE0E";
@@ -258,7 +276,7 @@ function loadMine(){ try{ return JSON.parse(localStorage.getItem(KEY)) || []; }c
 function saveMine(a){ try{ localStorage.setItem(KEY, JSON.stringify(a)); return true; }catch(e){ return false; } }
 function esc(s){ const d=document.createElement("div"); d.textContent=s==null?"":s; return d.innerHTML; }
 function todayISO(){ const n=new Date(); return new Date(n.getTime()-n.getTimezoneOffset()*60000).toISOString().slice(0,10); }
-const WORLD = ["Weather","Conflict"];
+const WORLD = ["Weather","Conflict","War","Unrest","Earthquake","Disaster"];
 
 function render(){
   const evs = [];
